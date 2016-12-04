@@ -53,7 +53,7 @@ if(isset($_POST["upload"])) {
 
 	    $areaofficenerchalf = explode("/",$nerc);
 	    $areaofficekaedchalf = explode("/",$kaedc);
-	    $areaoffice = $areaofficenerchalf[1].'-'.$areaofficenerchalf[1];
+	    $areaoffice = $areaofficenerchalf[1].$areaofficekaedchalf[1];
 	    $current_balance = $a[7];
 	    if($meter =="NOMETER")
 	    {

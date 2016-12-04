@@ -66,11 +66,13 @@ if(isset($_POST["upload"])) {
 
 //$my_file = 'seed.php';
 //$hand = fopen($my_file, 'a') or die('Cannot open file:  '.$my_file);
+$avgitems = array(23,52,33,31,39,71,93,43,97,12,200,51,49,22,11,44,55,66,77,88,99,41,14,25);
+$average_consumption = $avgitems[array_rand($avgitems)];
 
 	$genCode .="\n". "['first_name' => '$firstName', 'last_name' => '$lastName', 'tariff_type' => '$tarrif', 'address' => '$address',
   'phone' => '09098787263', 'category' => 'post-paid', 'area_office_codes' => '$areaoffice', 'transformer_codes' => '$transformer',
-  'book_code' => '$bookcode', 'metered'=>'$m', 'meter_number' => '$mt', 'average_consumption' => '000',
-  'classification' => 'non-md', 'initial_meter_reading' => '0000', 'current_balance'=>'$current_balance','institution' => 'Ministry','customer_phcn_number_full'=>'$phcn',customer_nerc_number_full=>'$nerc',customer_kaedc_number_full=>'$kaedc','status'=>'active'],";
+  'book_code' => '$bookcode', 'metered'=>'$m', 'meter_number' => '$mt', 'average_consumption' => '$average_consumption',
+  'classification' => 'non-md', 'initial_meter_reading' => '0000', 'current_balance'=>'$current_balance','institution' => 'Ministry','customer_phcn_number_full'=>'$phcn','customer_nerc_number_full'=>'$nerc','customer_kaedc_number_full'=>'$kaedc','status'=>'active'],";
 //fwrite($hand, $seed);
 
 
