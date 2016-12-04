@@ -19,26 +19,15 @@ if(isset($_POST["upload"])) {
 	if (($handle = fopen($file_name, "r")) !== FALSE) {
 		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 			$num = count($data);
-			//echo "<p> $num fields in line $row: <br /></p>\n";
 			$row++;
 			$a = array();
 			 for ($c=0; $c < $num; $c++) {
-				//print_r(explode("\t",$data[$c]));
 				$a[$c] = $data[$c];
-            			
-				//echo  "<br />\n";
-				//$rowline = explode("\t",$data[$c]);
-//print_r($rowline);
-//				echo $rowline[1];
-//				echo "\n";
-//die();
         		}
 	
 
 	  
 	    $names = explode(" ", $a[3]);
-//echo count($names);
-//die();
             if(count($names)==1)
 	    {
 	    $firstName = $names[0];
@@ -58,12 +47,7 @@ if(isset($_POST["upload"])) {
 		$nj = explode("/",$nerc);
 		$kj = explode("/",$kaedc);
 		$transformer = $nj[5].$kj[5];
-	   //
-
-
-
-
-	    $bookcode =  str_replace('/', '', $a[9]);
+	        $bookcode =  str_replace('/', '', $a[9]);
 
 	    $areaofficenerchalf = explode("/",$nerc);
 	    $areaofficekaedchalf = explode("/",$kaedc);
@@ -93,7 +77,6 @@ fwrite($hand, $seed);
 
 	}//if fopen
       }
-//echo "DASER YOU DID PRINT :". $row . " ROWS";
 	
 }
 
