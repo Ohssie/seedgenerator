@@ -17,6 +17,8 @@ if(isset($_POST["upload"])) {
 	//$str = file_get_contents($file_name);
 	$row = 1;
 	if (($handle = fopen($file_name, "r")) !== FALSE) {
+
+               $genCode = "DB::table('customers')->insert([";
 		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 			$num = count($data);
 			$row++;
@@ -62,20 +64,30 @@ if(isset($_POST["upload"])) {
 		$mt = $meter;
 	    }
 
-$my_file = 'seed.php';
-$hand = fopen($my_file, 'a') or die('Cannot open file:  '.$my_file);
+//$my_file = 'seed.php';
+//$hand = fopen($my_file, 'a') or die('Cannot open file:  '.$my_file);
 
-	$seed ="\n". "DB::table('customers')->insert([
-        ['first_name' => '$firstName', 'last_name' => '$lastName', 'tariff_type' => '$tarrif', 'address' => '$address',
+	$genCode .="\n". "['first_name' => '$firstName', 'last_name' => '$lastName', 'tariff_type' => '$tarrif', 'address' => '$address',
   'phone' => '09098787263', 'category' => 'post-paid', 'area_office_codes' => '$areaoffice', 'transformer_codes' => '$transformer',
   'book_code' => '$bookcode', 'metered'=>'$m', 'meter_number' => '$mt', 'average_consumption' => '000',
   'classification' => 'non-md', 'initial_meter_reading' => '0000', 'current_balance'=>'$current_balance','institution' => 'Ministry','customer_phcn_number_full'=>'$phcn',customer_nerc_number_full=>'$nerc',customer_kaedc_number_full=>'$kaedc','status'=>'active'],";
-fwrite($hand, $seed);
+//fwrite($hand, $seed);
+
 
 		}//while
 		fclose($handle);
-
+$genCode .="]);";
 	}//if fopen
+$beginTag = "<?php";
+$beginTag .= "\n";
+$beginTag .= $genCode;
+$beginTag .= "\n";
+$beginTag .="?>";
+
+$my_file = 'seed.php';
+$hand = fopen($my_file, 'a') or die('Cannot open file:  '.$my_file);
+fwrite($hand, $beginTag);
+//echo ;
       }
 	
 }
