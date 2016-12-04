@@ -4,4 +4,5 @@ This is actually a proof of concept for a seed code generator for a laravel proj
 1. Make sure you set proper permission in your app directory for file creation.
 2. Ensure the sample_data.csv is in same directory as your application. (not really compulsory, just incase you are having issues)
 3. You can tweak code to reduce the size of file
+4. Buy me bear if you find it useful
 
